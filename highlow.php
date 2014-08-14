@@ -11,9 +11,11 @@ fwrite(STDOUT, 'Guess a number between 1 and 100... ');
 // var_dump($guess);
 $correct = false;
 
+
+
 //check answer
 
-while (!$correct){
+do {
 	//take user input
 	$guess = trim(fgets(STDIN));
 	$num_of_guesses++;
@@ -22,14 +24,16 @@ if($guess == $answer) {
 	fwrite(STDOUT, "GOOD GUESS\nIt took you $num_of_guesses tries\n ");
 	$correct = true;
 	exit(0);
-} elseif ($guess > $answer) {
+} elseif ($guess > $answer && $guess <= 100) {
 	// usleep(3000000);
 	fwrite(STDOUT, "LOWER\nGUESS AGAIN\n");
-} else {
+} elseif ($guess < $answer && $guess > 0) {
 	// usleep(3000000);
 	fwrite(STDOUT, "HIGHER\nGUESS AGAIN\n");
+} else {
+	fwrite(STDOUT, "Only enter numbers between 1 and 100\nGUESS AGAIN\n");
 }
-}
+} while(!$correct);
 
 //if guess is correct output correct and end the game
 
