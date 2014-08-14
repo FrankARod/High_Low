@@ -1,6 +1,6 @@
 <?php
 
-$answer = rand(1, 100);
+$answer = mt_rand(1, 100);
 
 // echo $answer;
 
@@ -20,16 +20,16 @@ while (!$correct){
 	$guess = trim(fgets(STDIN));
 
 if($guess == $answer) {
-	usleep(3000000);
-	fwrite(STDOUT, "GOOD GUESS\n");
+	// usleep(3000000);
+	fwrite(STDOUT, "GOOD GUESS\n ");
 	exit(0);
 	$correct = true;
 } elseif ($guess > $answer) {
-	usleep(3000000);
-	fwrite(STDOUT, "LOWER\n");
+	// usleep(3000000);
+	fwrite(STDOUT, "LOWER\nGUESS AGAIN\n");
 } else {
-	usleep(3000000);
-	fwrite(STDOUT, "HIGHER\n");
+	// usleep(3000000);
+	fwrite(STDOUT, "HIGHER\nGUESS AGAIN\n");
 }
 }
 
