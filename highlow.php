@@ -4,9 +4,7 @@ $answer = mt_rand(1, 100);
 
 // echo $answer;
 
-$guess = 0;
-
-
+$num_of_guesses = 0;
 
 fwrite(STDOUT, 'Guess a number between 1 and 100... ');
 
@@ -18,12 +16,12 @@ $correct = false;
 while (!$correct){
 	//take user input
 	$guess = trim(fgets(STDIN));
-
+	$num_of_guesses++;
 if($guess == $answer) {
 	// usleep(3000000);
-	fwrite(STDOUT, "GOOD GUESS\n ");
-	exit(0);
+	fwrite(STDOUT, "GOOD GUESS\nIt took you $num_of_guesses tries\n ");
 	$correct = true;
+	exit(0);
 } elseif ($guess > $answer) {
 	// usleep(3000000);
 	fwrite(STDOUT, "LOWER\nGUESS AGAIN\n");
