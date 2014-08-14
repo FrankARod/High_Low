@@ -1,16 +1,25 @@
 <?php
 
-
+$longopts = array(
+	"min:",
+	"max:"
+	);
+$options = getopt("", $longopts);
 //check if arguments are present
-if ($argc == 3) {
+if (isset($options['min'])) {
 	
-	if ($argv[1] < $argv[2]) { // prevents mt_rand errors if users set maximums lower than mins
+	/*if ($argv[1] < $argv[2]) { 
+		
 		$max = $argv[2];
 		$min = $argv[1];
+		
 	} else {
-		fwrite(STDOUT, "Minimum is higher than maximum. Please run again with correct arguments. \n");
-		exit(0);
-	}
+		$max = $argv[1];
+		$min = $argv[2];
+	}*/
+	
+	$min = $options["min"];
+	$max = $options['max'];
 
 } else {
 	$max = 100;
@@ -34,8 +43,11 @@ do {
 	if($guess == $answer) {
 
 		fwrite(STDOUT, "GOOD GUESS\nIt took you $num_of_guesses tries\n ");
+		
 		$correct = true;
+		
 		fwrite(STDOUT, "Would you like to play again?\ny / n\n");
+		
 		$response = trim(fgets(STDIN));
 		
 		if ($response == 'y') {
